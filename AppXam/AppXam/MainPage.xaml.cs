@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppXam.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,9 +14,17 @@ namespace AppXam
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private ApiPersonas _apiPersonas;
         public MainPage()
         {
             InitializeComponent();
+            _apiPersonas = new ApiPersonas();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            lstPersonas.ItemsSource = await _apiPersonas.ObtenerPersonas();
         }
     }
 }

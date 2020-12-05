@@ -1,4 +1,5 @@
 ﻿using AppXam.Modelos;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -24,16 +25,15 @@ namespace AppXam.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
+                    personas = JsonConvert.DeserializeObject<List<Persona>>(content);
                 }
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 
-            return ApiPersonas;
-
+            return personas;
         }
 
 

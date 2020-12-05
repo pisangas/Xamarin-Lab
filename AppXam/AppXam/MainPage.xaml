@@ -5,12 +5,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AppXam.MainPage">
-
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <ListView x:Name="lstPersonas" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20, 0, 0, 0">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding PersonaId}"/>
+                                <Label Text="-"/>
+                                <Label Text="{Binding Nombre}"/>
+                            </StackLayout>
+                            <Label Text="{Binding FechaNacimiento, StringFormat='{0:yyyy-MM-dd}'}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
-
 </ContentPage>
